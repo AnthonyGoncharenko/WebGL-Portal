@@ -1,17 +1,13 @@
-class Cube extends glObject {
+class Cube extends Drawable {
     constructor() {
-        super("textures/metal.jpg");
+        super("textures/white.jpg");
         this.numVertices = 36;
 
         this.vPositions = [];
         this.vNormals = [];
         this.vTexs = [];
-        this.build();
-        //  Load shaders and initialize attribute buffers
-        this.bindVertices();
-    }
-    build() {
-        var vertices = [
+
+        let vertices = [
             vec3(-1, -1, 1),
             vec3(-1, 1, 1),
             vec3(1, 1, 1),
@@ -21,17 +17,19 @@ class Cube extends glObject {
             vec3(1, 1, -1),
             vec3(1, -1, -1)
         ];
-        var indices = [
+        let indices = [
             0, 3, 2, 0, 2, 1, 2, 3, 7, 2, 7, 6, 0, 4, 7, 0, 7, 3, 1, 2, 6, 1, 6,
             5, 4, 5, 6, 4, 6, 7, 0, 1, 5, 0, 5, 4
         ];
-        for (var i = 0; i < indices.length; i += 3) {
+        for (let i = 0; i < indices.length; i += 3) {
             this.triangle(
                 vertices[indices[i]],
                 vertices[indices[i + 1]],
                 vertices[indices[i + 2]]
             );
         }
+        //  Load shaders and initialize attribute buffers
+        this.bindVertices();
     }
     triangle(a, b, c) {
         var t1, t2, t3;
