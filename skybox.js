@@ -7,7 +7,7 @@ class Skybox {
         this.time = 0.0;
 
         //  Load shaders and initialize attribute buffers
-        this.program = initShaders(gl, "/vshader.glsl", "/fshader.glsl");
+        this.program = initShaders(gl, "vshader/vshader.glsl", "fshader/fshader.glsl");
         gl.useProgram(this.program);
         this.textureUnit = gl.getUniformLocation(this.program, "textureUnit");
         this.modelMatrix = mat4();
