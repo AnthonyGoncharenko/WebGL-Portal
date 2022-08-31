@@ -219,10 +219,10 @@ class Drawable {
             gl.bindTexture(gl.TEXTURE_2D, this.textureID);
         }
 
-        if (!this.reflect && this.shadow) {
-            gl.activeTexture(gl.TEXTURE2);
-            gl.bindTexture(gl.TEXTURE_2D, sun.depthTexture);
-        }
+        // if (!this.reflect && this.shadow) {
+        //     gl.activeTexture(gl.TEXTURE2);
+        //     gl.bindTexture(gl.TEXTURE_2D, sun.depthTexture);
+        // }
 
         gl.uniform1i(this.textureSampler, 0);
         gl.uniform1i(this.textureUnit, 1);
@@ -237,7 +237,7 @@ class Drawable {
         gl.vertexAttribPointer(this.aTexs, 2, gl.FLOAT, false, 0, 0);
         gl.uniform1i(this.textureSampler, 0);
         gl.uniform1f(this.useVertex, 0.0);
-        gl.uniform1f(this.useDistort, useCarCamera);
+        // gl.uniform1f(this.useDistort, useCarCamera);
         gl.uniform1f(this.useReflection, this.reflect);
         gl.uniform1f(this.uTime, this.time);
         // gl.uniform1f(this.hasShadow, this.shadow);
@@ -251,7 +251,7 @@ class Drawable {
         gl.uniform1f(this.lightAlpha1, sun.alpha);
         gl.uniform1f(this.lightCutoffAngle1, sun.cutoffAngle);
         gl.uniform1i(this.lightType1, sun.type);
-        gl.uniform1i(this.lightOff1, sun.off);
+        gl.uniform1i(this.lightOff1, !sun.on);
 
         gl.uniform4fv(this.lightPos2, flash.position);
         gl.uniform4fv(this.lightDir2, flash.direction);
@@ -261,7 +261,7 @@ class Drawable {
         gl.uniform1f(this.lightAlpha2, flash.alpha);
         gl.uniform1f(this.lightCutoffAngle2, flash.cutoffAngle);
         gl.uniform1i(this.lightType2, flash.type);
-        gl.uniform1f(this.lightOff2, flash.off);
+        gl.uniform1f(this.lightOff2, !flash.on);
 
         //material properties
         gl.uniform4fv(this.matSpec, this.specular);
@@ -270,8 +270,9 @@ class Drawable {
         gl.uniform1f(this.matAlpha, this.shininess);
 
         gl.uniformMatrix4fv(this.modelMatrixID, false, flatten(this.modelMatrix));
-        gl.uniformMatrix4fv(this.cameraMatrixID, false, flatten(cam.getCameraMatrix()));
-        gl.uniformMatrix4fv(this.projectionMatrixID, false, flatten(cam.getProjectionMatrix()));
+        console.log(cam)
+        gl.uniformMatrix4fv(this.cameraMatrixID, false, flatten(cam.camera_matrix));
+        gl.uniformMatrix4fv(this.projectionMatrixID, false, flatten(cam.project_matrix));
         var light_camera_matrix = lookAt(vec3(sun.position[0], sun.position[1], sun.position[2]), vec3(0, 0, 0), vec3(0, 1, 0));
         gl.uniformMatrix4fv(this.lightMatrixID, false, flatten(light_camera_matrix));
         var light_proj_matrix = perspective(90, canvas.width / canvas.height, 0.1, 100);

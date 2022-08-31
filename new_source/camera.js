@@ -8,7 +8,9 @@ class Camera {
         this.n = normalize(subtract(this.eye, at));
         this.u = normalize(cross(up, this.n));
         this.v = cross(this.n, this.u);
+        this.project_matrix = perspective(45, canvas.width / canvas.height, 0.1, 100);
         this.updateCamMatrix();
+
     }
 
     getPosition() {
@@ -19,7 +21,7 @@ class Camera {
         return mult(-1.0, this.n);
     }
     getCameraMatrix() {
-        return this.camera_matrix;
+        return this.camMatrix;
     }
 
     getProjectionMatrix() {

@@ -10,7 +10,7 @@ var flash;
 var toggleFlash;
 var vertexShade;
 var cam;
-
+var sdtSize = 1024;
 const sqrt2 = Math.sqrt(2);
 
 const vShader = 'vShader.glsl';
@@ -47,6 +47,43 @@ window.onload = function init() {
     // plane = new Plane(cam, 1, vShader, fShader);
     // cube = new Cube(cam, vShader, fShader)
     // pyramid = new Pyramid();
+    // shadowFrameBuffer = gl.createFramebuffer();
+    // shadowFrameBuffer.width = sdtSize;
+    // shadowFrameBuffer.height = sdtSize;
+    // gl.bindFramebuffer(gl.FRAMEBUFFER, shadowFrameBuffer);
+    // shadowRenderBuffer = gl.createRenderbuffer();
+    // gl.bindRenderbuffer(gl.RENDERBUFFER, shadowRenderBuffer);
+    // gl.renderbufferStorage(
+    //     gl.RENDERBUFFER,
+    //     gl.DEPTH_COMPONENT16,
+    //     sdtSize,
+    //     sdtSize
+    // );
+    // gl.framebufferRenderbuffer(
+    //     gl.FRAMEBUFFER,
+    //     gl.DEPTH_ATTACHMENT,
+    //     gl.RENDERBUFFER,
+    //     shadowRenderBuffer
+    // );
+    // sun.depthTexture = gl.createTexture();
+    // gl.bindTexture(gl.TEXTURE_2D, sun.depthTexture);
+    // gl.texImage2D(
+    //     gl.TEXTURE_2D,
+    //     0,
+    //     gl.RGBA,
+    //     sdtSize,
+    //     sdtSize,
+    //     0,
+    //     gl.RGBA,
+    //     gl.UNSIGNED_BYTE,
+    //     null
+    // );
+    // gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    // gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    // gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    // gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    // gl.bindFramebuffer(gl.FRAMEBUFFER, null); //restore to window frame/depth buffer
+    // gl.bindRenderbuffer(gl.RENDERBUFFER, null);
     render();
 };
 

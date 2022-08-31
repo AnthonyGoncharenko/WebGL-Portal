@@ -200,11 +200,11 @@ class Sphere extends Drawable {
 
         this.vPositions = [];
         this.vNormals = [];
-        this.vTexes = [];
+        this.vTexs = [];
         console.log('building sphere')
-        this.build(this.numVertices);
+        this.build(1);
         console.log('done building sphere')
-        // this.assignGouraudNormals();
+        this.assignGouraudNormals();
         this.bindVertices();
     }
 
@@ -243,9 +243,9 @@ class Sphere extends Drawable {
         this.vNormals.push(N);
         this.vNormals.push(N);
         this.vNormals.push(N);
-        this.vTexes.push(vec2(0, 0));
-        this.vTexes.push(vec2(1, 0));
-        this.vTexes.push(vec2(1, 1));
+        this.vTexs.push(vec2(0, 0));
+        this.vTexs.push(vec2(1, 0));
+        this.vTexs.push(vec2(1, 1));
 
     }
 }
