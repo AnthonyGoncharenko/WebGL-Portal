@@ -1,4 +1,7 @@
 function extractVertices(obj_file_name) {
+
+    console.log("START MFKER");
+
     let data = {
         vPositions: [],
         vTexs: [],
@@ -9,7 +12,10 @@ function extractVertices(obj_file_name) {
     var vnormals = [];
     var vtxtures = [];
 
+    console.log(lines.length)
+
     for (const line of lines) {
+
         var strings = line.trimRight().split(/[ ]+/);
 
         switch (strings[0]) {
@@ -96,5 +102,8 @@ function extractVertices(obj_file_name) {
                 break;
         }
     }
+
+    console.log("DONE MFKER")
+
     return data;
 }

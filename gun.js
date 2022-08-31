@@ -5,6 +5,7 @@ class Gun extends Drawable {
         this.vTexs = data.vTexs;
         this.vNormals = data.vNormals;
         this.vPositions = data.vPositions;
+        this.numVertices = this.vPositions.length;
         this.bindVertices();
     }
 }

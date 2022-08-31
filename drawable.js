@@ -11,8 +11,8 @@ class Drawable {
         this.reflect = false;
         this.shadow = true;
         //  Load shaders and initialize attribute buffers
-        this.program = initShaders(gl, "/vshader_env_shadow.glsl", "/fshader_env_shadow.glsl");
-        this.shadowProgram = initShaders(gl, "/vshader_shadow.glsl", "/fshader_shadow.glsl");
+        this.program = initShaders(gl, "vshader/vshader_env_shadow.glsl", "fshader/fshader_env_shadow.glsl");
+        this.shadowProgram = initShaders(gl, "vshader/vshader_shadow.glsl", "fshader/fshader_shadow.glsl");
 
         this.modelMatrix = mat4();
         this.sizeMatrix = mat4();
@@ -224,7 +224,7 @@ class Drawable {
         }
     }
 
-    render(camera, projection) {
+    render() {
         gl.useProgram(this.program);
         if (this.reflect) {
             this.createEnvironmentMap();
@@ -287,8 +287,8 @@ class Drawable {
         gl.uniform1f(this.matAlpha, this.shininess);
 
         gl.uniformMatrix4fv(this.modelMatrixID, false, flatten(this.modelMatrix));
-        gl.uniformMatrix4fv(this.cameraMatrixID, false, flatten(camera));
-        gl.uniformMatrix4fv(this.projectionMatrixID, false, flatten(projection));
+        gl.uniformMatrix4fv(this.cameraMatrixID, false, flatten(camera.getCameraMatrix()));
+        gl.uniformMatrix4fv(this.projectionMatrixID, false, flatten(camera.getProjectionMatrix()));
         var light_camera_matrix = lookAt(vec3(sun.position[0], sun.position[1], sun.position[2]), vec3(0, 0, 0), vec3(0, 1, 0));
         gl.uniformMatrix4fv(this.lightMatrixID, false, flatten(light_camera_matrix));
         var light_proj_matrix = perspective(90, canvas.width / canvas.height, 0.1, 100);
@@ -310,9 +310,9 @@ class Drawable {
             gl.bindTexture(gl.TEXTURE_2D, null);
         }
     }
-    draw(camera, projection) {
+    draw() {
         this.time += 0.1;
-        this.render(camera, projection);
+        this.render(camera.getCameraMatrix(), camera.getProjectionMatrix());
     }
 
     createEnvironmentMap() {
