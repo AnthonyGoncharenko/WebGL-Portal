@@ -140,21 +140,9 @@ class Drawable {
             false,
             flatten(this.modelMatrix)
         );
-        var camera_matrix = lookAt(
-            vec3(sun.position[0], sun.position[1], sun.position[2]),
-            vec3(0, 0, 0),
-            vec3(0, 1, 0)
-        );
-        gl.uniformMatrix4fv(
-            this.cameraMatrixIDS,
-            false,
-            flatten(camera_matrix)
-        );
-        gl.uniformMatrix4fv(
-            this.projectionMatrixIDS,
-            false,
-            flatten(projection)
-        );
+        var camera_matrix = lookAt(vec3(sun.position[0], sun.position[1], sun.position[2]), vec3(0, 0, 0), vec3(0, 1, 0));
+        gl.uniformMatrix4fv(this.cameraMatrixIDS, false, flatten(camera_matrix));
+        gl.uniformMatrix4fv(this.projectionMatrixIDS, false, flatten(projection));
         gl.uniform1f(this.maxDepth, maxDepth);
 
         gl.enableVertexAttribArray(this.aPositionS);
@@ -167,11 +155,7 @@ class Drawable {
     bindVertices() {
         this.vID = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vID);
-        gl.bufferData(
-            gl.ARRAY_BUFFER,
-            flatten(this.vPositions),
-            gl.STATIC_DRAW
-        );
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vPositions), gl.STATIC_DRAW);
         this.aPosition = gl.getAttribLocation(this.program, "aPosition");
 
         // Vertex normals
@@ -187,11 +171,7 @@ class Drawable {
 
         this.vIDS = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vIDS);
-        gl.bufferData(
-            gl.ARRAY_BUFFER,
-            flatten(this.vPositions),
-            gl.STATIC_DRAW
-        );
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(this.vPositions), gl.STATIC_DRAW);
         this.aPositionS = gl.getAttribLocation(this.shadowProgram, "aPosition");
     }
 
@@ -273,15 +253,15 @@ class Drawable {
         gl.uniform1i(this.lightType1, sun.type);
         gl.uniform1i(this.lightOff1, sun.off);
 
-        gl.uniform4fv(this.lightPos2, flashlight.position);
-        gl.uniform4fv(this.lightDir2, flashlight.direction);
-        gl.uniform4fv(this.lightDiff2, flashlight.diffuse);
-        gl.uniform4fv(this.lightSpec2, flashlight.specular);
-        gl.uniform4fv(this.lightAmb2, flashlight.ambient);
-        gl.uniform1f(this.lightAlpha2, flashlight.alpha);
-        gl.uniform1f(this.lightCutoffAngle2, flashlight.cutoffAngle);
-        gl.uniform1i(this.lightType2, flashlight.type);
-        gl.uniform1f(this.lightOff2, flashlight.off);
+        gl.uniform4fv(this.lightPos2, flash.position);
+        gl.uniform4fv(this.lightDir2, flash.direction);
+        gl.uniform4fv(this.lightDiff2, flash.diffuse);
+        gl.uniform4fv(this.lightSpec2, flash.specular);
+        gl.uniform4fv(this.lightAmb2, flash.ambient);
+        gl.uniform1f(this.lightAlpha2, flash.alpha);
+        gl.uniform1f(this.lightCutoffAngle2, flash.cutoffAngle);
+        gl.uniform1i(this.lightType2, flash.type);
+        gl.uniform1f(this.lightOff2, flash.off);
 
         //material properties
         gl.uniform4fv(this.matSpec, this.specular);
