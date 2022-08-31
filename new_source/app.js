@@ -30,7 +30,7 @@ window.onload = function init() {
 
     vertexShade = true;
     sunAngle = 0;
-
+    console.log('here 2')
     cam = new Camera(vec3(0, 4, 4), vec3(0, 0, -1));
     sun = new Light();
     sun.setLocation(10, 0, 0, 1);
@@ -42,11 +42,11 @@ window.onload = function init() {
     flash.setSpecular(1, 1, 1);
     flash.setDiffuse(1, 0, 1);
     flash.turnOn();
-
-    sphere = new Sphere(cam, 4, vShader, fShader);
-    plane = new Plane(cam, 1, vShader, fShader);
-    cube = new Cube(cam, vShader, fShader)
-    pyramid = new Pyramid();
+    console.log('here')
+    sphere = new Sphere();
+    // plane = new Plane(cam, 1, vShader, fShader);
+    // cube = new Cube(cam, vShader, fShader)
+    // pyramid = new Pyramid();
     render();
 };
 
@@ -58,9 +58,9 @@ function render() {
         sun = new Light();
         sun.setLocation(10 * Math.cos(sunAngle), 10 * Math.sin(sunAngle), 0);
         sphere.draw();
-        plane.draw();
-        cube.draw();
-        pyramid.draw();
+        // plane.draw();
+        // cube.draw();
+        // pyramid.draw();
     }, 100);
 }
 
@@ -89,7 +89,4 @@ document.addEventListener('keyup', event => {
             break;
     }
     cam.updateCamMatrix();
-    sphere.camMatrix = cam.camMatrix;
-    plane.camMatrix = cam.camMatrix;
-    cube.camMatrix = cam.camMatrix;
 });

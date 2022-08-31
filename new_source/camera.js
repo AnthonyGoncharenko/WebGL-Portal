@@ -11,6 +11,20 @@ class Camera {
         this.updateCamMatrix();
     }
 
+    getPosition() {
+        return this.eye;
+    }
+
+    getDirection() {
+        return mult(-1.0, this.n);
+    }
+    getCameraMatrix() {
+        return this.camera_matrix;
+    }
+
+    getProjectionMatrix() {
+        return this.project_matrix;
+    }
     moveN(amt) {
         this.eye = add(this.eye, mult(-amt, this.n));
         this.updateCamMatrix();

@@ -25,8 +25,6 @@ uniform int lightType2;
 uniform bool lightOff2;
 uniform vec4 matAmbient, matDiffuse, matSpecular;
 uniform float matAlpha;
-uniform sampler2D textureID;
-uniform bool useTexture;
 
 out vec4 fColor;
 
@@ -97,8 +95,5 @@ void main() {
       fColor.a = 1.0;
    } else {
       fColor = color;
-   }
-   if(useTexture) {
-      fColor = fColor * texture(textureID, texCoord);
    }
 }
