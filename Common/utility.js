@@ -1,10 +1,8 @@
 (function () {
-    "use strict";
+    'use strict';
 
-    window.getShaderSource = function (id) {
-        return document
-            .getElementById(id)
-            .textContent.replace(/^\s+|\s+$/g, "");
+    window.getShaderSource = function(id) {
+        return document.getElementById(id).textContent.replace(/^\s+|\s+$/g, '');
     };
 
     function createShader(gl, source, type) {
@@ -14,18 +12,10 @@
         return shader;
     }
 
-    window.createProgram = function (
-        gl,
-        vertexShaderSource,
-        fragmentShaderSource
-    ) {
+    window.createProgram = function(gl, vertexShaderSource, fragmentShaderSource) {
         var program = gl.createProgram();
         var vshader = createShader(gl, vertexShaderSource, gl.VERTEX_SHADER);
-        var fshader = createShader(
-            gl,
-            fragmentShaderSource,
-            gl.FRAGMENT_SHADER
-        );
+        var fshader = createShader(gl, fragmentShaderSource, gl.FRAGMENT_SHADER);
         gl.attachShader(program, vshader);
         gl.deleteShader(vshader);
         gl.attachShader(program, fshader);
@@ -49,7 +39,7 @@
 
         return program;
     };
-    /*
+/*
    window.loadImage = function(url, onload) {
         var img = new Image();
         img.src = url;

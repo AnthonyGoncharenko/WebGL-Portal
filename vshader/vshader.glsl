@@ -1,14 +1,15 @@
 #version 300 es
-precision mediump float;
-
 in vec4 aPosition;
-out vec3 texCoord;
+in vec2 aTextureCoord;
 
-uniform mat4 modelMatrix;
-uniform mat4 cameraMatrix;
-uniform mat4 projMatrix;
+out vec2 vTextureCoord;
 
-void main() {
-   texCoord = normalize(aPosition.xyz);
-   gl_Position = projMatrix * cameraMatrix * modelMatrix * aPosition;
+
+uniform mat4 modelMatrix, cameraMatrix, projectionMatrix;
+
+
+void main()
+{
+    gl_Position = projectionMatrix*cameraMatrix*modelMatrix*aPosition;
+    vTextureCoord = aTextureCoord;
 }

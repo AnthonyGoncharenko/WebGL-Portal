@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>WebGL-Portal</title>
+    <title>WebGL-Final</title>
     <meta lang="en"/>
     <meta name="description"
-          content="WebGL-Portal -- Utilizing the power of WebGL we hope to be able to present a project that can show off everything we learned during the term."/>
-    <meta name="keywords" content="WebGL-Portal"/>
+          content="WebGL-Final -- Utilizing the power of WebGL we hope to be able to present a project that can show off everything we learned during the term."/>
+    <meta name="keywords" content="WebGL-Final"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://greggman.github.io/webgl-lint/webgl-lint.js" crossorigin></script>
     <script type="text/javascript" src="./Common/initShaders2.js"></script>
     <script type="text/javascript" src="./Common/MV.js"></script>
     <script type="text/javascript" src="./Common/MVnew.js"></script>
-    <script type="text/javascript" src="./camera.js"></script>
-    <script type="text/javascript" src="./drawable.js"></script>
-    <script type="text/javascript" src="./skybox.js"></script>
-    <script type="text/javascript" src="./plane.js"></script>
-    <script type="text/javascript" src="./cube.js"></script>
-    <script type="text/javascript" src="./pipe.js"></script>
-    <script type="text/javascript" src="./gun.js"></script>
+    <script type="text/javascript" src="./src/baseClass.js"></script>
+    <script type="text/javascript" src="./src/obj.js"></script>
+    <script type="text/javascript" src="./src/switch.js"></script>
+    <script type="text/javascript" src="./src/robot.js"></script>
+    <script type="text/javascript" src="./src/camera.js"></script>
+    <script type="text/javascript" src="./src/roboCam.js"></script>
+    <script type="text/javascript" src="./src/plane.js"></script>
+    <script type="text/javascript" src="./src/cube.js"></script>
+    <script type="text/javascript" src="./src/sphere.js"></script>
+    <script type="text/javascript" src="./src/pyramid.js"></script>
+    <script type="text/javascript" src="./src/light.js"></script>
     <script type="text/javascript" src="./app.js"></script>
-    <script type="text/javascript" src="./gun.js"></script>
-    <script type="text/javascript" src="./loadObjects.js"></script>
-    <script type="text/javascript" src="./light.js"></script>
-    <!-- <script src="https://greggman.github.io/webgl-lint/webgl-lint.js" data-gman-debug-helper='
-        {
-          "failUnsetUniforms": true
-        }
-      '>
-      </script> -->
   </head>
   <body>
-    <canvas id="gl-canvas" width="512" height="512"> Not supported </canvas>
+    <canvas id="gl-canvas" width="1024" height="1024"> Not supported </canvas>
     <ul>
-      <li>W/S: Slide Camera forward and backward</li>
-      <li>A/D: Slide Camera side to side</li>
+      <li>W/S: Slide Camera Forward and Backward</li>
+      <li>A/D: Slide Camera Side to Side</li>
       <li>z/Z: Rolls</li>
       <li>x/X: Pitch</li>
       <li>c/C: Yaw</li>
-      <li>Spacebar: Switch Camera Perspective</li>
+      <li>Q: Switch Between Global and Robot Camera</li>
     </ul>
+    <p>Iron man likes to spin, click Q to see what he sees.</p>
+    <p>
+      Click on the Switch with the mouse to continuously generate NEW random objects, located randomly in the world, at a random size.
+    </p>
+    <p>Click on the spinning spheres to pause their movement, and click on them again to restart their movement.</p>
+	
+	<h2>Citations</h2>
+	<ul>
+		<li>https://www.cgtrader.com/free-3d-models/character/sci-fi-character/ironman-10ede529-5bc7-4689-81d9-dd3e62154397
+		</li>
+		<li>https://www.cgtrader.com/free-3d-models/industrial/industrial-part/knife-switch-dual-throw
+		</li>
+	</ul>
   </body>
 </html>
